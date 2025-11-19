@@ -1,4 +1,4 @@
-package br.edu.ifsp.clashroyaleprojeto;
+package br.edu.ifsp.exemplo;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

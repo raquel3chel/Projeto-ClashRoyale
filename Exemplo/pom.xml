@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.edu.ifsp</groupId>
-    <artifactId>ClashRoyaleProjeto</artifactId>
+    <artifactId>ProjetoClash</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>ClashRoyaleProjeto</name>
+    <name>Exemplo</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -69,8 +69,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>br.edu.ifsp.clashroyaleprojeto/br.edu.ifsp.clashroyaleprojeto.HelloApplication
-                            </mainClass>
+                            <mainClass>br.edu.ifsp.exemplo/br.edu.ifsp.exemplo.ui.ClashApp</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

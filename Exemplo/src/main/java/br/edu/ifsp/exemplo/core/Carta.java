@@ -1,7 +1,6 @@
-package br.edu.ifsp.clashroyaleprojeto.core;
+package br.edu.ifsp.exemplo.core;
 
 public class Carta {
-
     //atributos
     private String nome;
     private int nivel;
@@ -42,7 +41,7 @@ public class Carta {
 
     //cartas consideradas iguais/mesmo nome
     @Override
-    public boolean equals(object obj){
+    public boolean equals(Object obj){
         if(this == obj) {
             return true;
         }
@@ -54,12 +53,12 @@ public class Carta {
     }
 
     @Override
-    public int hasCode(){
-        return.toLowerCase().hasCode();
+    public int hashCode(){
+        return nome.toLowerCase().hashCode();
     }
 
     @Override
-    public StringtoString(){
+    public String toString(){
         return nome + "(" + tipoCarta + "," + custElixir + " elixir)";
     }
 }

@@ -1,10 +1,9 @@
-package br.edu.ifsp.clashroyaleprojeto.core;
+package br.edu.ifsp.exemplo.core;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
-
     //atributos
     //nome do deck
     private String nome;
@@ -40,7 +39,33 @@ public class Deck {
         return cartas.remove(carta);
     }
 
+    public String getNome(){
+        return nome;
+    }
+
+    public List<Carta> getCartas() {
+        return cartas;
+    }
+
+    // metodo para calcular o custo medio de elixir das cartas
+    public double calcularCustoMedioElixir(){
+
+        int numDeCartas = cartas.size();
+        double somaTotalElixir = 0.0;
+
+        if(numDeCartas == 0){
+            System.out.println("Não há nenhuma carta no Deck");
+            return 0.0;
+        }
+
+        for(Carta carta : cartas){
+            somaTotalElixir += carta.getCustElixir();
+        }
+
+        return somaTotalElixir / numDeCartas;
 
 
+
+    }
 
 }
