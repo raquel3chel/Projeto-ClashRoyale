@@ -1,0 +1,12 @@
+nome;nivel;elixir;tipo;raridade;alvo;dano;danoSeg;vida;alcance;velocidade;velocidadeImpacto
+Arqueiras;11;3.0;Tropa;COMUM;AMBOS;50;30;150;5.0;Média;1.2
+Bola de Fogo;11;4.0;Feitiço;RARA;AMBOS;50;30;150;5.0;Média;1.2
+Torre Inferno;11;5.0;Contrução;RARA;AMBOS;50;30;150;5.0;Média;1.2
+Mosqueteira;11;4.0;Tropa;RARA;TERRESTRE;50;30;150;5.0;Média;1.2
+Horda de Servos;11;5.0;Tropa;COMUM;TERRESTRE;50;30;150;5.0;Média;1.2
+Gigante;11;5.0;Tropa;RARA;TERRESTRE;50;30;150;5.0;Média;1.2
+Valquíria;11;4.0;Tropa;RARA;TERRESTRE;50;30;150;5.0;Média;1.2
+Príncipe;11;5.0;Tropa;EPICA;TERRESTRE;50;30;150;5.0;Média;1.2
+Canhão;11;3.0;Contrução;COMUM;AMBOS;50;30;150;5.0;Média;1.2
+Zap;11;2.0;Feitiço;COMUM;AMBOS;50;30;150;5.0;Média;1.2
+raq;9;4.0;Tropa;COMUM;TERRESTRE;5;3;4;3.0;Lenta;3.0

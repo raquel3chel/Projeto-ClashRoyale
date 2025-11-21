@@ -1,26 +1,36 @@
 package br.edu.ifsp.exemplo.core;
 
+import br.edu.ifsp.exemplo.data.CSV;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sistema {
 
-    private static Sistema instancia;
+    private static Sistema instance;
 
     public static  Sistema getInstance(){
-        if(instancia == null){
-            instancia = new Sistema();
+        if(instance == null){
+            instance = new Sistema();
         }
-        return instancia;
+        return instance;
     }
 
-    private List<Carta> cartas;
-    private List<Deck> decks;
+    private ObservableList<Carta> cartas;
+    private List<Deck> decks ;
 
-    public Sistema(){
-        this.cartas = new ArrayList<>();
-        this.decks = new ArrayList<>();
-        cartasIniciais();
+    private Sistema(){
+        cartas = FXCollections.observableArrayList();
+        decks = new ArrayList<>();
+        carregarCarta();
+
+        if (cartas.isEmpty()){
+            cartasIniciais();
+            salvar();
+        }
     }
 
     private void cartasIniciais(){
@@ -46,12 +56,12 @@ public class Sistema {
                 return false;
             }
         }
-
         cartas.add(carta);
+        salvar();
         return true;
     }
 
-    public List<Carta> getCartas(){
+    public ObservableList<Carta> getCartas(){
         return cartas;
     }
 
@@ -62,6 +72,16 @@ public class Sistema {
             }
         }
         return null;
+    }
+
+    public void salvar(){
+        CSV.salvaCarta(cartas);
+    }
+
+    public void carregarCarta(){
+        List<Carta> cartasArquivo = CSV.carregarCartas();
+        cartas.clear();
+        cartas.addAll(cartasArquivo);
     }
 
     public boolean criarDeck(String nome){

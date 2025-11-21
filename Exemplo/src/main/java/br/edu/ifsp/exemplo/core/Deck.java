@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
+
+    public static  final int LIMITE = 8;
+
     //atributos
     //nome do deck
     private String nomeDeck;
@@ -20,7 +23,7 @@ public class Deck {
     //adicionar cartas no deck
     //carta adicionada true
     public boolean adicionarCarta(Carta carta){
-        if(cartas.size() >= 8){
+        if(cartas.size() >= LIMITE){
             System.out.println("Deck cheio");
             return false;
         }
@@ -36,14 +39,17 @@ public class Deck {
     //remover cartas do deck
     //true se foi removida
     public boolean removerCarta(Carta carta){
+
         return cartas.remove(carta);
     }
 
     public String getNome(){
+
         return nomeDeck;
     }
 
     public List<Carta> getCartas() {
+
         return cartas;
     }
 

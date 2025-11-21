@@ -17,6 +17,8 @@ public class ClashApp extends Application {
     @Override
     public void start(Stage stage) {
 
+        Sistema sistema = Sistema.getInstance();
+
         Deck decks = new Deck("Meu primeiro deck");
         TabPane pagina = new TabPane();
 
@@ -37,10 +39,9 @@ public class ClashApp extends Application {
         Cadastro telaCadastro = new Cadastro(decks);
         pagCartas.setContent(telaCadastro.getLayout());
 
-        // ======== COLEÇÃO ===========
-        Colecao telaColecao = new Colecao(Sistema.getInstance().getCartas());
+        // COLEÇÃO
+        Colecao telaColecao = new Colecao();
         pagColecao.setContent(telaColecao.getLayout());
-
 
         Scene cena = new Scene(pagina, 900, 600);
         stage.setTitle("Clash-Royale");
