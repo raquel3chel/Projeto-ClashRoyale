@@ -6,13 +6,13 @@ import java.util.List;
 public class Deck {
     //atributos
     //nome do deck
-    private String nome;
+    private String nomeDeck;
     //cartas do deck
     private List<Carta> cartas;
 
     //construtor
     public Deck(String nome){
-        this.nome = nome;
+        this.nomeDeck = nome;
         this.cartas = new ArrayList<>();
     }
 
@@ -40,7 +40,7 @@ public class Deck {
     }
 
     public String getNome(){
-        return nome;
+        return nomeDeck;
     }
 
     public List<Carta> getCartas() {
@@ -63,8 +63,6 @@ public class Deck {
         }
 
         return somaTotalElixir / numDeCartas;
-
-
 
     }
 

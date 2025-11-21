@@ -5,6 +5,7 @@ module br.edu.ifsp.exemplo {
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
     requires javafx.graphics;
+    requires java.desktop;
 
     opens br.edu.ifsp.exemplo to javafx.fxml;
     exports br.edu.ifsp.exemplo;

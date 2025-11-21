@@ -1,13 +1,17 @@
 package br.edu.ifsp.exemplo.ui;
 
+import br.edu.ifsp.exemplo.core.Carta;
 import br.edu.ifsp.exemplo.core.Deck;
+import br.edu.ifsp.exemplo.core.Sistema;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
+
 import java.io.IOException;
+import java.util.List;
 
 public class ClashApp extends Application {
     @Override
@@ -16,8 +20,7 @@ public class ClashApp extends Application {
         Deck decks = new Deck("Meu primeiro deck");
         TabPane pagina = new TabPane();
 
-        //pagina das cartas
-        Tab pagCartas = new Tab("Cartas");
+        Tab pagCartas = new Tab("Cadastro");
         pagCartas.setClosable(false);
 
         //coleçao
@@ -27,11 +30,17 @@ public class ClashApp extends Application {
         //Decks
         Tab pagDeck = new Tab("Decks");
         pagDeck.setClosable(false);
+        pagDeck.setContent(null);
 
         pagina.getTabs().addAll(pagCartas, pagColecao, pagDeck);
 
-        Cadastro tela = new Cadastro(decks);
-        tela.mostrar(stage);
+        Cadastro telaCadastro = new Cadastro(decks);
+        pagCartas.setContent(telaCadastro.getLayout());
+
+        // ======== COLEÇÃO ===========
+        Colecao telaColecao = new Colecao(Sistema.getInstance().getCartas());
+        pagColecao.setContent(telaColecao.getLayout());
+
 
         Scene cena = new Scene(pagina, 900, 600);
         stage.setTitle("Clash-Royale");

@@ -6,23 +6,31 @@ public class Carta {
     private int nivel;
     private int custElixir; //quanto de elixir precisa pra usar a carta
     private TipoDeCarta tipoCarta;
-    private String raridade;
+    private Raridade raridade;
     private String imagem;
     private int dano;
     private int danoSeg;
     private int pontosVida;
-    private String tipoAlvos;
-    private Double alcance;
-    private String velocidade;
-    private String velocImpacto;
+    private TipoAlvo tipoAlvos;
+    private double alcance;
+    private Velocidade velocidade;
+    private double velocImpacto;
 
     //contrutores
-    public Carta(String nome, int nivel, int custElixir, TipoDeCarta tipoCarta, String raridade){
+    public Carta(String nome, int nivel, int custElixir, TipoDeCarta tipoCarta, Raridade raridade, TipoAlvo alvo,
+                 int dano, int danoSeg, int pontosVida, double alcance, Velocidade velocidade, double velocImpacto){
         this.nome = nome;
         this.nivel = nivel;
         this.custElixir = custElixir;
         this.tipoCarta = tipoCarta;
         this.raridade = raridade;
+        this.tipoAlvos = alvo;
+        this.danoSeg = danoSeg;
+        this.dano = dano;
+        this.pontosVida = pontosVida;
+        this.alcance = alcance;
+        this.velocidade = velocidade;
+        this.velocImpacto = velocImpacto;
     }
 
     //
@@ -38,6 +46,37 @@ public class Carta {
         return tipoCarta;
     }
 
+    public Raridade getRaridade(){
+        return raridade;
+    }
+
+    public int getDano(){
+        return dano;
+    }
+
+    public int getDanoSeg() {
+        return danoSeg;
+    }
+
+    public int getPontosVida() {
+        return pontosVida;
+    }
+
+    public double getAlcance() {
+        return alcance;
+    }
+
+    public TipoAlvo getTipoAlvos(){
+        return tipoAlvos;
+    }
+
+    public Velocidade getVelocidade(){
+        return velocidade;
+    }
+
+    public double getVelocImpacto() {
+        return velocImpacto;
+    }
 
     //cartas consideradas iguais/mesmo nome
     @Override
