@@ -41,7 +41,12 @@ public class ClashApp extends Application {
 
         // COLEÇÃO
         Colecao telaColecao = new Colecao();
-        pagColecao.setContent(telaColecao.getLayout());
+        pagColecao.setOnSelectionChanged(ev -> {
+            if (pagColecao.isSelected()){
+                pagColecao.setContent(telaColecao.getLayout());
+            }
+        });
+
 
         Scene cena = new Scene(pagina, 900, 600);
         stage.setTitle("Clash-Royale");

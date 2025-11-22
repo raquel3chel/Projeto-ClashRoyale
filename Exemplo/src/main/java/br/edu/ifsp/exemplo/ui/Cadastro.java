@@ -2,178 +2,222 @@ package br.edu.ifsp.exemplo.ui;
 
 import br.edu.ifsp.exemplo.core.*;
 import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import org.w3c.dom.Text;
+import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage; // Necessário para FileChooser
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Cadastro {
 
-    //deck das cartas que vão ser cadastradas
-    private Deck deck;
+    // =================================================================
+    // VARIÁVEIS DE INSTÂNCIA (para limpeza e acesso nos métodos)
+    // =================================================================
 
+    // TextFields
+    private final TextField txtNomeCarta = new TextField();
+    private final TextField txtNivel = new TextField();
+    private final TextField txtCustoElixir = new TextField();
+    private final TextField txtDano = new TextField();
+    private final TextField txtDanoSeg = new TextField();
+    private final TextField txtVida = new TextField();
+    private final TextField txtAlcance = new TextField();
+    private final TextField txtImpac = new TextField();
+    private final TextField txtCaminhoImagem = new TextField();
+
+    // ComboBoxes
+    private final ComboBox<Velocidade> tipoVel = new ComboBox<>();
+    private final ComboBox<TipoDeCarta> tipoCar = new ComboBox<>();
+    private final ComboBox<Raridade> tipoRarid = new ComboBox<>();
+    private final ComboBox<TipoAlvo> tipoAl = new ComboBox<>();
+
+    // Outros Componentes
+    private final Label lblMensagem = new Label();
+    private final ImageView imageView = new ImageView();
+
+    // O Deck é mantido, mas não usado na lógica de cadastro
     public Cadastro(Deck deck){
-        this.deck = deck;
+        // Inicialização da ImageView
+        imageView.setFitWidth(50);
+        imageView.setFitHeight(50);
+        imageView.setPreserveRatio(true);
+        txtCaminhoImagem.setEditable(false);
     }
+
+    // =================================================================
+    // MÉTODOS DE AÇÃO
+    // =================================================================
+
+    private void handleBuscarImagem() {
+        // Usa o stage da aplicação (getScene().getWindow())
+        Stage stage = (Stage) txtCaminhoImagem.getScene().getWindow();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Selecionar Imagem da Carta");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Arquivos de Imagem", "*.png", "*.jpg", "*.jpeg")
+        );
+
+        File file = fileChooser.showOpenDialog(stage);
+
+        if (file != null) {
+            String imagePath = file.getAbsolutePath();
+            txtCaminhoImagem.setText(imagePath);
+
+            try {
+                // Pré-visualização da imagem selecionada
+                Image image = new Image(new FileInputStream(file), 50, 50, true, true);
+                imageView.setImage(image);
+            } catch (FileNotFoundException ex) {
+                imageView.setImage(null);
+                lblMensagem.setText("Erro ao carregar pré-visualização.");
+            }
+        }
+    }
+
+    private void limparCampos() {
+        // Limpeza completa dos TextFields e da ImageView
+        txtNomeCarta.clear();
+        txtNivel.clear();
+        txtCustoElixir.clear();
+        txtDano.clear();
+        txtDanoSeg.clear();
+        txtVida.clear();
+        txtAlcance.clear();
+        txtImpac.clear();
+        txtCaminhoImagem.clear();
+        imageView.setImage(null);
+
+        // Limpeza dos ComboBoxes
+        tipoRarid.setValue(null);
+        tipoCar.setValue(null);
+        tipoAl.setValue(null);
+        tipoVel.setValue(null);
+
+        lblMensagem.setText("");
+        txtNomeCarta.requestFocus();
+    }
+
 
     public GridPane getLayout(){
 
-        Label novaCarta = new Label("Nova Carta");
-        novaCarta.setStyle("-fx-font-size: 18px; -fx-font-weight: bold;");
-
-        Label nomeCarta = new Label("Nome da carta: ");
-        TextField txtNomeCarta = new TextField();
-
-        Label nivelCarta = new Label("Nivel da carta: ");
-        TextField txtNivel = new TextField();
-
-        Label custoElixir = new Label("Custo de elixir: ");
-        TextField txtcustoElixir = new TextField();
-
-        Label dano = new Label("Dano:");
-        TextField txtdano = new TextField();
-
-        Label danoSeg = new Label("Dano por Segundo:");
-        TextField txtdanoSeg = new TextField();
-
-        Label vida = new Label("Pontos de Vida:");
-        TextField txtvida = new TextField();
-
-        Label alcance = new Label("Alcance da Carta:");
-        TextField txtalcance = new TextField();
-
-        Label velImpacto = new Label("Velocidade do Impacto");
-        TextField txtImpac = new TextField();
-
-        Label velocidade = new Label("Velocidade:");
-        ComboBox<Velocidade> tipoVel = new ComboBox<>();
+        // Configuração dos ComboBoxes
         tipoVel.getItems().addAll(Velocidade.values());
-
-        Label tipoCarta = new Label("Tipo de carta: ");
-        ComboBox<TipoDeCarta> tipoCar = new ComboBox<>();
         tipoCar.getItems().addAll(TipoDeCarta.values());
-
-        Label tipoRaridade = new Label("Raridade:");
-        ComboBox<Raridade> tipoRarid = new ComboBox<>();
         tipoRarid.getItems().addAll(Raridade.values());
-
-        Label tipoAlvo = new Label("Tipo de Alvo");
-        ComboBox<TipoAlvo> tipoAl = new ComboBox<>();
         tipoAl.getItems().addAll(TipoAlvo.values());
 
+        // Botões e Componentes de Ação
         Button cadastrar = new Button("Cadastrar");
-        Label cadastro = new Label();
+        Button btnBuscarImagem = new Button("Buscar Imagem");
+        btnBuscarImagem.setOnAction(e -> handleBuscarImagem());
 
-        //botao
+        HBox imagemInputBox = new HBox(5, txtCaminhoImagem, btnBuscarImagem);
+
+        // =================================================================
+        // LÓGICA DO CADASTRO
+        // =================================================================
         cadastrar.setOnAction(e -> {
+            String caminhoImagem = txtCaminhoImagem.getText().trim();
 
-            //verifica e mostra msg se tiver algum campo vazio
+            // 1. Validação de campos vazios
             if (txtNomeCarta.getText().trim().isEmpty() || txtNivel.getText().trim().isEmpty() ||
-                    txtcustoElixir.getText().trim().isEmpty() || txtdano.getText().trim().isEmpty() ||
-                    txtdanoSeg.getText().trim().isEmpty() || txtvida.getText().trim().isEmpty() ||
-                    txtalcance.getText().trim().isEmpty() || txtImpac.getText().trim().isEmpty() ||
-                    tipoCar.getValue() == null|| tipoRarid.getValue() == null || tipoAl.getValue() == null ||
-                    tipoVel.getValue() == null
-                    ){
-
-                cadastro.setText("Preencha todos os campos!");
+                    txtCustoElixir.getText().trim().isEmpty() || txtDano.getText().trim().isEmpty() ||
+                    txtDanoSeg.getText().trim().isEmpty() || txtVida.getText().trim().isEmpty() ||
+                    txtAlcance.getText().trim().isEmpty() || txtImpac.getText().trim().isEmpty() ||
+                    caminhoImagem.isEmpty() || // CRÍTICO: Validação da imagem
+                    tipoCar.getValue() == null || tipoRarid.getValue() == null || tipoAl.getValue() == null ||
+                    tipoVel.getValue() == null)
+            {
+                lblMensagem.setText("Preencha todos os campos, incluindo a imagem!");
                 return;
             }
 
             try {
-
+                // Coleta e conversão de dados
                 int nivel = Integer.parseInt(txtNivel.getText());
-                int custo = Integer.parseInt(txtcustoElixir.getText());
-                int danoCar = Integer.parseInt(txtdano.getText());
-                int danoS = Integer.parseInt(txtdanoSeg.getText());
-                int pontosVida = Integer.parseInt(txtvida.getText());
-                double alc = Double.parseDouble(txtalcance.getText());
+                int custo = Integer.parseInt(txtCustoElixir.getText());
+                int danoCar = Integer.parseInt(txtDano.getText());
+                int danoS = Integer.parseInt(txtDanoSeg.getText());
+                int pontosVida = Integer.parseInt(txtVida.getText());
+                double alc = Double.parseDouble(txtAlcance.getText());
                 double impac = Double.parseDouble(txtImpac.getText());
                 String nomeCar = txtNomeCarta.getText().trim();
 
-                TipoDeCarta tip = tipoCar.getValue();
-                Raridade ra = tipoRarid.getValue();
-                TipoAlvo alvo = tipoAl.getValue();
-                Velocidade veloc = tipoVel.getValue();
-
-                //cria a carta
-                Carta carta = new Carta(nomeCar, nivel, custo, tip, ra, alvo, danoCar, danoS, pontosVida, alc, veloc, impac);
+                // Cria a carta (13 argumentos, 6º é o caminho da imagem)
+                Carta carta = new Carta(nomeCar, nivel, custo, tipoCar.getValue(), tipoRarid.getValue(),
+                        caminhoImagem, tipoAl.getValue(), danoCar, danoS, pontosVida,
+                        alc, tipoVel.getValue(), impac);
 
                 boolean ok = Sistema.getInstance().cadastrarCarta(carta);
 
                 if(!ok) {
-                    cadastro.setText("Essa carta já existe");
+                    lblMensagem.setText("Essa carta já existe");
                     return;
                 }
 
-                cadastro.setText("Carta cadastrada");
+                lblMensagem.setText("Carta cadastrada!");
 
-                txtNomeCarta.clear();
-                txtNivel.clear();
-                txtcustoElixir.clear();
-                txtalcance.clear();
-                txtdanoSeg.clear();
-                txtdano.clear();
-                txtvida.clear();
-                txtImpac.clear();
-                tipoRarid.setValue(null);
-                tipoCar.setValue(null);
-                tipoAl.setValue(null);
-                tipoVel.setValue(null);
+                // CRÍTICO: Limpeza completa
+                limparCampos();
 
             } catch (NumberFormatException ex){
-                cadastro.setText("Nível e Custo devem ser números inteiros");
-                return;
+                lblMensagem.setText("Nível, Custo, Dano, Vida e Impacto devem ser números válidos!");
+            } catch (Exception ex) {
+                lblMensagem.setText("Erro ao salvar carta: " + ex.getMessage());
+                System.err.println("Erro ao cadastrar: " + ex.getMessage());
             }
 
         });
 
+        // =================================================================
+        // ESTRUTURA DO LAYOUT
+        // =================================================================
         GridPane layout = new GridPane();
         layout.setPadding(new Insets(20));
         layout.setHgap(10);
         layout.setVgap(10);
 
-        layout.add(novaCarta, 0, 0, 2, 1);
+        int row = 0;
 
-        layout.add(nomeCarta, 0, 1);
-        layout.add(txtNomeCarta, 1, 1);
+        layout.add(new Label("Nova Carta"), 0, row, 2, 1);
+        layout.add(imageView, 2, row, 1, 2); // Pré-visualização
+        row++;
 
-        layout.add(nivelCarta,0, 2);
-        layout.add(txtNivel, 1,2);
+        layout.add(new Label("Nome da carta:"), 0, row); layout.add(txtNomeCarta, 1, row++);
 
-        layout.add(custoElixir, 0, 3);
-        layout.add(txtcustoElixir, 1, 3);
+        layout.add(new Label("Nivel da carta:"),0, row); layout.add(txtNivel, 1,row++);
 
-        layout.add(dano,0, 4);
-        layout.add(txtdano, 1,4);
+        layout.add(new Label("Custo de elixir:"), 0, row); layout.add(txtCustoElixir, 1, row++);
 
-        layout.add(danoSeg,0, 5);
-        layout.add(txtdanoSeg, 1,5);
+        layout.add(new Label("Dano:"),0, row); layout.add(txtDano, 1,row++);
 
-        layout.add(vida,0, 6);
-        layout.add(txtvida, 1,6);
+        layout.add(new Label("Dano por Segundo:"),0, row); layout.add(txtDanoSeg, 1,row++);
 
-        layout.add(alcance,0, 7);
-        layout.add(txtalcance, 1,7);
+        layout.add(new Label("Pontos de Vida:"),0, row); layout.add(txtVida, 1,row++);
 
-        layout.add(velImpacto,0, 8);
-        layout.add(txtImpac, 1,8);
+        layout.add(new Label("Alcance da Carta:"),0, row); layout.add(txtAlcance, 1,row++);
 
-        layout.add(tipoCarta, 0, 9);
-        layout.add(tipoCar, 1, 9);
+        layout.add(new Label("Velocidade do Impacto"),0, row); layout.add(txtImpac, 1,row++);
 
-        layout.add(tipoRaridade, 0, 10);
-        layout.add(tipoRarid, 1, 10);
+        layout.add(new Label("Tipo de carta:"), 0, row); layout.add(tipoCar, 1, row++);
 
-        layout.add(tipoAlvo,0, 11);
-        layout.add(tipoAl, 1,11);
+        layout.add(new Label("Raridade:"), 0, row); layout.add(tipoRarid, 1, row++);
 
-        layout.add(velocidade,0, 12);
-        layout.add(tipoVel, 1,12);
+        layout.add(new Label("Tipo de Alvo"),0, row); layout.add(tipoAl, 1,row++);
 
-        layout.add(cadastrar, 0, 13);
-        layout.add(cadastro, 1, 13);
+        layout.add(new Label("Velocidade:"),0, row); layout.add(tipoVel, 1,row++);
+
+        // CAMPO E BOTÃO DE IMAGEM
+        layout.add(new Label("Caminho Imagem:"), 0, row); layout.add(imagemInputBox, 1, row++);
+
+        layout.add(cadastrar, 0, row);
+        layout.add(lblMensagem, 1, row);
 
         return layout;
     }

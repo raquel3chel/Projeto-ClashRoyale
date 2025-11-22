@@ -1,12 +1,12 @@
-nome;nivel;elixir;tipo;raridade;alvo;dano;danoSeg;vida;alcance;velocidade;velocidadeImpacto
-Arqueiras;11;3.0;Tropa;COMUM;AMBOS;50;30;150;5.0;Média;1.2
-Bola de Fogo;11;4.0;Feitiço;RARA;AMBOS;50;30;150;5.0;Média;1.2
-Torre Inferno;11;5.0;Contrução;RARA;AMBOS;50;30;150;5.0;Média;1.2
-Mosqueteira;11;4.0;Tropa;RARA;TERRESTRE;50;30;150;5.0;Média;1.2
-Horda de Servos;11;5.0;Tropa;COMUM;TERRESTRE;50;30;150;5.0;Média;1.2
-Gigante;11;5.0;Tropa;RARA;TERRESTRE;50;30;150;5.0;Média;1.2
-Valquíria;11;4.0;Tropa;RARA;TERRESTRE;50;30;150;5.0;Média;1.2
-Príncipe;11;5.0;Tropa;EPICA;TERRESTRE;50;30;150;5.0;Média;1.2
-Canhão;11;3.0;Contrução;COMUM;AMBOS;50;30;150;5.0;Média;1.2
-Zap;11;2.0;Feitiço;COMUM;AMBOS;50;30;150;5.0;Média;1.2
-raq;9;4.0;Tropa;COMUM;TERRESTRE;5;3;4;3.0;Lenta;3.0
+nome;nivel;elixir;tipo;raridade;imagem;alvo;dano;danoSeg;vida;alcance;velocidade;velocidadeImpacto
+Arqueiras;11;3.0;TROPA;COMUM;imagens/arqueiras.png;AMBOS;50;30;150;5.0;MEDIA;1.2
+Bola de Fogo;11;4.0;FEITICO;RARA;imagens/bolaDeFogo.png;AMBOS;50;30;150;5.0;MEDIA;1.2
+Torre Inferno;11;5.0;CONSTRUCAO;RARA;imagens/torreInferno.png;AMBOS;50;30;150;5.0;MEDIA;1.2
+Mosqueteira;11;4.0;TROPA;RARA;imagens/mosqueteira.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
+Horda de Servos;11;5.0;TROPA;COMUM;imagens/hordaDeServos.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
+Gigante;11;5.0;TROPA;RARA;imagens/gigante.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
+Valquíria;11;4.0;TROPA;RARA;imagens/valquiria.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
+Príncipe;11;5.0;TROPA;EPICA;imagens/principe.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
+Canhão;11;3.0;CONSTRUCAO;COMUM;imagens/canhao.png;AMBOS;50;30;150;5.0;MEDIA;1.2
+Zap;11;2.0;FEITICO;COMUM;imagens/zap.png;AMBOS;50;30;150;5.0;MEDIA;1.2
+re;3;5.0;TROPA;COMUM;C:\Users\Raquel\Downloads\Imagem do WhatsApp de 2025-11-12 à(s) 19.59.56_aebba415.jpg;TERRESTRE;7;4;8;9.0;LENTA;3.0
