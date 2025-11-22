@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.text.DecimalFormat; // Importação para formatar o Elixir
 
 /**
- * Classe customizada para renderizar cada item da ListView (Coleção).
- * Estende ListCell<Carta> e define o visual de Carta com imagem, texto e botões Detalhes/Usar.
+ * Classe para mostrar os detalhes de cada item da ListView (Coleção).
+ * Estende ListCell<Carta> e define o visual de Carta com imagem, texto e botoes Detalhes/Usar.
  */
 public class CartaDetalhes extends ListCell<Carta> {
     private final HBox rootLayout;
@@ -69,16 +69,16 @@ public class CartaDetalhes extends ListCell<Carta> {
             setGraphic(null);
             setText(null);
         } else {
-            // 1. Define os labels
+            // define os labels
             nomeLabel.setText(carta.getNome() + " (Nível " + carta.getNivel() + ")");
             // Formata Elixir
             nivelElixirLabel.setText("Elixir: " + ELIXIR_FORMAT.format(carta.getCustElixir()) + " | " + carta.getRaridade());
 
-            // 2. Tenta carregar a imagem
+            // tenta carregar a imagem
             try {
                 String imagePath = carta.getImagem();
                 if (imagePath != null && !imagePath.isEmpty()) {
-                    // Carrega a imagem como RECURSO (do classpath: /imagens/...)
+                    // carrega a imagem como recurso (do classpath: /imagens/...)
                     if (imagePath.startsWith("/imagens/")) {
                         Image img = new Image(getClass().getResourceAsStream(imagePath), 60, 70, true, true);
                         imageView.setImage(img);

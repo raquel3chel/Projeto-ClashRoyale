@@ -9,7 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.ScrollPane;
 
 /**
- * Interface gráfica para a aba "Coleção".
+ * Interface gráfica para a aba Coleção.
  * Vinculada à ObservableList do Sistema e usa a CartaDetalhes para renderização customizada.
  */
 public class Colecao {
@@ -25,14 +25,13 @@ public class Colecao {
         Label colecao = new Label("Coleção de Cartas Disponíveis");
         colecao.setStyle("-fx-font-size: 22px; -fx-font-weight: bold;");
 
-        // CRÍTICO: Usar a ListView tipada
+        // usar a ListView
         ListView<Carta> lista = new ListView<>();
 
-        // 1. VINCULA à lista OBSERVÁVEL do Sistema.
+        // liga à lista observavel do Sistema
         lista.setItems(Sistema.getInstance().getCartas());
 
-        // 2. DEFINE A FÁBRICA DE CÉLULAS (Customização do Visual)
-        // Isso força a lista a usar a sua classe CartaDetalhes para desenhar cada item.
+        //força a lista a usar a  classe CartaDetalhes para desenhar cada item
         lista.setCellFactory(param -> new CartaDetalhes());
 
         // Define a altura para que a lista seja visível

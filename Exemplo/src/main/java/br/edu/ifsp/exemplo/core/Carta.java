@@ -18,7 +18,7 @@ public class Carta {
     private Velocidade velocidade;
     private double velocImpacto;
 
-    //contrutores (13 argumentos)
+    //contrutores
     public Carta(String nome, int nivel, double custElixir, TipoDeCarta tipoCarta, Raridade raridade, String imagem, TipoAlvo alvo,
                  int dano, int danoSeg, int pontosVida, double alcance, Velocidade velocidade, double velocImpacto){
         this.nome = nome;
@@ -36,20 +36,46 @@ public class Carta {
         this.velocImpacto = velocImpacto;
     }
 
-    // ================== GETTERS (Todos necessários para UI e CSV) ==================
-    public String getNome(){ return nome; }
-    public int getNivel() { return nivel; }
-    public double getCustElixir() { return custElixir; }
-    public TipoDeCarta getTipoCarta(){ return tipoCarta; }
-    public Raridade getRaridade(){ return raridade; }
-    public String getImagem() { return imagem; }
-    public TipoAlvo getTipoAlvos(){ return tipoAlvos; }
-    public int getDano(){ return dano; }
-    public int getDanoSeg() { return danoSeg; }
-    public int getPontosVida() { return pontosVida; }
-    public double getAlcance() { return alcance; }
-    public Velocidade getVelocidade(){ return velocidade; }
-    public double getVelocImpacto() { return velocImpacto; }
+    //gets
+    public String getNome(){
+        return nome;
+    }
+    public int getNivel() {
+        return nivel;
+    }
+    public double getCustElixir() {
+        return custElixir;
+    }
+    public TipoDeCarta getTipoCarta(){
+        return tipoCarta;
+    }
+    public Raridade getRaridade(){
+        return raridade;
+    }
+    public String getImagem() {
+        return imagem;
+    }
+    public TipoAlvo getTipoAlvos(){
+        return tipoAlvos;
+    }
+    public int getDano(){
+        return dano;
+    }
+    public int getDanoSeg() {
+        return danoSeg;
+    }
+    public int getPontosVida() {
+        return pontosVida;
+    }
+    public double getAlcance() {
+        return alcance;
+    }
+    public Velocidade getVelocidade(){
+        return velocidade;
+    }
+    public double getVelocImpacto() {
+        return velocImpacto;
+    }
 
     //cartas consideradas iguais/mesmo nome
     @Override

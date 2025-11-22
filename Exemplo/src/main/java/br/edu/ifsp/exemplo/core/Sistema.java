@@ -7,10 +7,9 @@ import javafx.collections.ObservableList;
 import java.util.List;
 import java.util.ArrayList;
 
-/**
- * Gerenciador principal do software (Singleton).
- * Controla a coleção de Cartas e Decks e a persistência de dados.
- */
+// Gerenciador principal do software (Singleton).
+//Controla a coleção de Cartas e Decks e a persistência de dados.
+
 public class Sistema {
 
     // Padrão Singleton
@@ -38,10 +37,7 @@ public class Sistema {
         }
     }
 
-    /**
-     * Define as cartas que o sistema deve ter se o arquivo de dados não existir.
-     * ATENÇÃO: O 6º argumento é o caminho da imagem (String).
-     */
+    //10 cartas ja cadastradas
     private void cartasIniciais(){
         // Usando o construtor de 13 argumentos: nome, nivel, elixir(double), tipo, raridade, IMAGEM, alvo, dano...
         cartas.add(new Carta("Arqueiras", 11, 3.0, TipoDeCarta.TROPA, Raridade.COMUM, "imagens/arqueiras.png", TipoAlvo.AMBOS, 50, 30, 150, 5.0, Velocidade.MEDIA, 1.2));
@@ -64,13 +60,13 @@ public class Sistema {
                 return false;
             }
         }
-        cartas.add(carta); // Adicionar aqui dispara a atualização na Coleção
+        cartas.add(carta); // adicionar aqui dispara a atualização na Coleção
         salvar();
         return true;
     }
 
     public ObservableList<Carta> getCartas(){
-        return cartas; // Retorna a lista observável
+        return cartas; // retorna a lista observável
     }
 
     public Carta buscarCarta(String nome){

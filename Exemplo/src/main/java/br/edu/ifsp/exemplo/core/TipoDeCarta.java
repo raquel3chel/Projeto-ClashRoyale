@@ -1,7 +1,7 @@
 package br.edu.ifsp.exemplo.core;
 
 public enum TipoDeCarta {
-    TROPA("Tropa"), FEITICO("Feitiço"), CONSTRUCAO("Contrução");
+    TROPA("Tropa"), FEITICO("Feitiço"), CONSTRUCAO("Construção");
 
     private final String descricao;
 

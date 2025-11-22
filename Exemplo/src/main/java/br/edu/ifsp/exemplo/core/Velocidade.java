@@ -6,6 +6,7 @@ public enum Velocidade {
     private final String vel;
 
     Velocidade (String vel){
+
         this.vel = vel;
     }
 
