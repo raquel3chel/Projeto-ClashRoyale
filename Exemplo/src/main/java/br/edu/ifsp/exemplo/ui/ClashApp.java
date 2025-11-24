@@ -14,12 +14,14 @@ import java.io.IOException;
 import java.util.List;
 
 public class ClashApp extends Application {
+
+    private GerenciadorDecks abasDecks;
+
     @Override
     public void start(Stage stage) {
 
         Sistema sistema = Sistema.getInstance();
 
-        Deck decks = new Deck("Meu primeiro deck");
         TabPane pagina = new TabPane();
 
         Tab pagCartas = new Tab("Cadastro");
@@ -32,11 +34,14 @@ public class ClashApp extends Application {
         //Decks
         Tab pagDeck = new Tab("Decks");
         pagDeck.setClosable(false);
-        pagDeck.setContent(null);
+
+        //GerenciadorDecks e o que tem na aba
+        abasDecks = new GerenciadorDecks();
+        pagDeck.setContent(abasDecks); //o conteudo da aba
 
         pagina.getTabs().addAll(pagCartas, pagColecao, pagDeck);
 
-        Cadastro telaCadastro = new Cadastro(decks);
+        Cadastro telaCadastro = new Cadastro(null);
         pagCartas.setContent(telaCadastro.getLayout());
 
         // COLEÇÃO

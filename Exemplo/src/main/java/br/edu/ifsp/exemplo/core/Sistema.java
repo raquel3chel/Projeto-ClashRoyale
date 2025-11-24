@@ -1,6 +1,7 @@
 package br.edu.ifsp.exemplo.core;
 
 import br.edu.ifsp.exemplo.data.CSV;
+import br.edu.ifsp.exemplo.data.DeckCSV;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -25,11 +26,13 @@ public class Sistema {
     // Coleção de Cartas (ObservableList para atualização automática da UI)
     private ObservableList<Carta> cartas;
     private List<Deck> decks ;
+    private Deck deckSelecionado;
 
     private Sistema(){
         cartas = FXCollections.observableArrayList();
-        decks = new ArrayList<>();
         carregarCarta(); // Tenta carregar dados do arquivo ao iniciar
+
+        decks = DeckCSV.carregarDeck(cartas);
 
         if (cartas.isEmpty()){
             cartasIniciais(); // Se o arquivo estiver vazio, cria cartas iniciais
@@ -37,9 +40,17 @@ public class Sistema {
         }
     }
 
+    public Deck getDeckSelecionado() {
+        return deckSelecionado;
+    }
+
+    public void setDeckSelecionado(Deck deck) {
+        this.deckSelecionado = deck;
+    }
+
     //10 cartas ja cadastradas
     private void cartasIniciais(){
-        // Usando o construtor de 13 argumentos: nome, nivel, elixir(double), tipo, raridade, IMAGEM, alvo, dano...
+
         cartas.add(new Carta("Arqueiras", 11, 3.0, TipoDeCarta.TROPA, Raridade.COMUM, "imagens/arqueiras.png", TipoAlvo.AMBOS, 50, 30, 150, 5.0, Velocidade.MEDIA, 1.2));
         cartas.add(new Carta("Bola de Fogo", 11, 4.0, TipoDeCarta.FEITICO, Raridade.RARA, "imagens/bolaDeFogo.png", TipoAlvo.AMBOS, 50, 30, 150, 5.0, Velocidade.MEDIA, 1.2));
         cartas.add(new Carta("Torre Inferno", 11, 5.0, TipoDeCarta.CONSTRUCAO, Raridade.RARA, "imagens/torreInferno.png", TipoAlvo.AMBOS, 50, 30, 150, 5.0, Velocidade.MEDIA, 1.2));

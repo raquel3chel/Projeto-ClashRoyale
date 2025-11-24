@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CSV {
     private static final String ARQUIVO = "cartas.csv";
-    private static final String SEPARADOR = ";"; // Mantido o separador ';' que você usou
+    private static final String SEPARADOR = ";"; // separador ';'
 
     //grava as cartas
     public static void salvaCarta(List<Carta> cartas){
@@ -29,6 +29,16 @@ public class CSV {
         }
     }
 
+    //exclui a carta do CSV
+    public static void excluirCarta(Carta excluir){
+        List<Carta> cartas = carregarCartas();
+
+        cartas.removeIf(c -> c.getNome().equalsIgnoreCase(excluir.getNome()));
+
+        salvaCarta(cartas);
+
+    }
+
     //le as cartas
     public static List<Carta>carregarCartas(){
         List<Carta> cartas = new ArrayList<>();
@@ -40,28 +50,21 @@ public class CSV {
             while((linha = reader.readLine()) != null) {
                 String[] dados = linha.split(SEPARADOR);
 
-                // CRÍTICO: Agora tem 13 campos (12 atributos + Imagem). O construtor tem 13 argumentos.
+                // 11 atributos e Imagem
                 if (dados.length != 13) {
                     System.out.println("Linha inválida no CSV, esperado 13 campos, ignorada: " + linha);
                     continue;
                 }
 
                 try {
-                    // Mapeamento: 13 argumentos no construtor da Carta
                     Carta c = new Carta(
                             dados[0],
-                            Integer.parseInt(dados[1]),
-                            Double.parseDouble(dados[2]), // CORREÇÃO AQUI: Deve ser Double.parseDouble para Elixir
-                            TipoDeCarta.valueOf(dados[3]),
-                            Raridade.valueOf(dados[4]),
-                            dados[5], // Imagem (String)
-                            TipoAlvo.valueOf(dados[6]),
-                            Integer.parseInt(dados[7]),
-                            Integer.parseInt(dados[8]),
-                            Integer.parseInt(dados[9]),
-                            Double.parseDouble(dados[10]),
-                            Velocidade.valueOf(dados[11]),
-                            Double.parseDouble(dados[12])
+                            Integer.parseInt(dados[1]), Double.parseDouble(dados[2]),
+                            TipoDeCarta.valueOf(dados[3]), Raridade.valueOf(dados[4]),
+                            dados[5], TipoAlvo.valueOf(dados[6]),
+                            Integer.parseInt(dados[7]), Integer.parseInt(dados[8]),
+                            Integer.parseInt(dados[9]), Double.parseDouble(dados[10]),
+                            Velocidade.valueOf(dados[11]), Double.parseDouble(dados[12])
                     );
                     cartas.add(c);
                 } catch (Exception e) {
@@ -69,7 +72,7 @@ public class CSV {
                 }
             }
         }catch (FileNotFoundException e){
-            System.out.println("Arquivo CSV não encontrado. Criando novo.");
+            System.out.println("Arquivo CSV não encontrado. Um novo sera criado");
         }catch (IOException e){
             System.out.println("Erro ao ler CSV: " + e.getMessage());
         }

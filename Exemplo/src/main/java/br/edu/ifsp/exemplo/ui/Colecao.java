@@ -22,7 +22,7 @@ public class Colecao {
         VBox root = new VBox(15);
         root.setPadding(new Insets(20));
 
-        Label colecao = new Label("Coleção de Cartas Disponíveis");
+        Label colecao = new Label("Coleção de Cartas");
         colecao.setStyle("-fx-font-size: 22px; -fx-font-weight: bold;");
 
         // usar a ListView

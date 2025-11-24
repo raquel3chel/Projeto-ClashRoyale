@@ -9,34 +9,64 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.net.URL;
+
 public class Detalhes {
 
     public static void exibir(Carta carta){
         Stage stage = new Stage();
-        stage.setTitle("Detalhes -" + carta.getNome());
+        stage.setTitle("Detalhes - " + carta.getNome());
 
         VBox root = new VBox(15);
         root.setPadding(new Insets(20));
 
         //imagem
-        ImageView img = new ImageView(new Image(Detalhes.class.getResourceAsStream(
-                "/imagens/" + carta.getNome().toLowerCase().replace(" ", " ") + ".png"))
+        Image image = null;
+
+        try {
+            String caminho = carta.getImagem();
+
+            // 1. Se for imagem interna (começa com "imagens/")
+            if (caminho.startsWith("imagens/")) {
+                String recurso = "/" + caminho;
+                URL url = Detalhes.class.getResource(recurso);
+                if (url != null) {
+                    image = new Image(url.openStream());
+                }
+            }
+
+            // 2. Se for arquivo externo
+            if (image == null || image.isError()) {
+                image = new Image(new FileInputStream(caminho));
+            }
+
+        } catch (Exception e) {
+            System.err.println("Erro ao carregar imagem: " + e.getMessage());
+        }
+
+        ImageView imgView = new ImageView(image);
+        imgView.setFitHeight(150);
+        imgView.setFitWidth(150);
+
+
+        Label nome = new Label("Nome: " + carta.getNome());
+        Label nivel = new Label("Nível: " + carta.getNivel());
+        Label elixir = new Label("Custo de Elixir: " + carta.getCustElixir());
+        Label raridade = new Label("Raridade: " + carta.getRaridade());
+        Label dano = new Label("Dano: " + carta.getDano());
+        Label dps = new Label("Dano por Segundo: " + carta.getDanoSeg());
+        Label vida = new Label("Vida: " + carta.getPontosVida());
+        Label alcance = new Label("Alcance: " + carta.getAlcance());
+        Label velocidade = new Label("Velocidade: " + carta.getVelocidade());
+
+        root.getChildren().addAll(
+                imgView, nome, nivel, elixir, raridade,
+                dano, dps, vida, alcance, velocidade
         );
-        img.setFitHeight(150);
-        img.setFitWidth(150);
 
-        root.getChildren().add(img);
-
-        root.getChildren().add(new Label("Nome: " + carta.getNome()));
-        root.getChildren().add(new Label("Tipo: " + carta.getTipoCarta()));
-        root.getChildren().add(new Label("Raridade: " + carta.getRaridade()));
-        root.getChildren().add(new Label("Custo de Elixir: " + carta.getCustElixir()));
-        root.getChildren().add(new Label("Alvo: " + carta.getTipoAlvos()));
-        root.getChildren().add(new Label("Dano: " + carta.getDano()));
-        root.getChildren().add(new Label("Dano/S: " + carta.getDanoSeg()));
-        root.getChildren().add(new Label("Vida: " + carta.getPontosVida()));
-
-        stage.setScene(new Scene(root, 300, 500));
+        stage.setScene(new Scene(root, 350, 500));
         stage.show();
     }
 }

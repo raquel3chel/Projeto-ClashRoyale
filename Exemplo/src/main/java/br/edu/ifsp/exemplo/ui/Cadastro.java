@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 
 public class Cadastro {
 
-    // variaveis de instancia (para limpeza e acesso nos métodos)
+    // variaveis de instancia
     // TextFields
     private final TextField txtNomeCarta = new TextField();
     private final TextField txtNivel = new TextField();
@@ -119,7 +119,7 @@ public class Cadastro {
         cadastrar.setOnAction(e -> {
             String caminhoImagem = txtCaminhoImagem.getText().trim();
 
-            // 1. Validação de campos vazios
+            // deixa os campos vazios depois de cadastrar a carta
             if (txtNomeCarta.getText().trim().isEmpty() || txtNivel.getText().trim().isEmpty() ||
                     txtCustoElixir.getText().trim().isEmpty() || txtDano.getText().trim().isEmpty() ||
                     txtDanoSeg.getText().trim().isEmpty() || txtVida.getText().trim().isEmpty() ||
