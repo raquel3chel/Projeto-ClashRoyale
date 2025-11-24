@@ -60,13 +60,17 @@ public class Detalhes {
         Label vida = new Label("Vida: " + carta.getPontosVida());
         Label alcance = new Label("Alcance: " + carta.getAlcance());
         Label velocidade = new Label("Velocidade: " + carta.getVelocidade());
+        Label velImpac = new Label("Velocidade de Impacto: " + carta.getVelocImpacto());
+        Label tipoAlv = new Label("Tipo de Alvo: " + carta.getTipoAlvos());
+        Label tipoCarta = new Label("Tipo de Carta: " + carta.getTipoCarta());
+
 
         root.getChildren().addAll(
                 imgView, nome, nivel, elixir, raridade,
-                dano, dps, vida, alcance, velocidade
+                dano, dps, vida, alcance, velocidade, velImpac, tipoAlv, tipoCarta
         );
 
-        stage.setScene(new Scene(root, 350, 500));
+        stage.setScene(new Scene(root, 400, 580));
         stage.show();
     }
 }
