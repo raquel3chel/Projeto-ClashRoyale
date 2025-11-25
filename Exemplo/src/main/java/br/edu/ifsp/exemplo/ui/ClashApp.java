@@ -13,7 +13,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
-public class ClashApp extends Application {
+public class
+ClashApp extends Application {
 
     private GerenciadorDecks abasDecks;
 

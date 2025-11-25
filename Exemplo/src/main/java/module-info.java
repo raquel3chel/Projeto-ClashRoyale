@@ -11,4 +11,6 @@ module br.edu.ifsp.exemplo {
     exports br.edu.ifsp.exemplo;
     exports br.edu.ifsp.exemplo.ui;
     opens br.edu.ifsp.exemplo.ui to javafx.fxml;
+    exports br.edu.ifsp.exemplo.core;
+    opens br.edu.ifsp.exemplo.core to javafx.fxml;
 }

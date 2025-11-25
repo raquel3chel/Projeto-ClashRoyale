@@ -16,8 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.layout.Priority;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.DecimalFormat; // Importação para formatar o Elixir
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,6 +32,7 @@ public class CartaDetalhes extends ListCell<Carta> {
     private final Button btnDetalhes;
     private final Button btnUsar;
     private final Button btnExcluir;
+    private final Button btnEditar;
 
     // Formatador para o Elixir
     private static final DecimalFormat ELIXIR_FORMAT = new DecimalFormat("0.#");
@@ -52,18 +51,20 @@ public class CartaDetalhes extends ListCell<Carta> {
         btnDetalhes = new Button("Detalhes");
         btnUsar = new Button("Usar");
         btnExcluir = new Button("Excluir");
+        btnEditar = new Button("Editar");
 
         // estilização dos botoes
         btnDetalhes.setStyle("-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;");
         btnUsar.setStyle("-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;");
         btnExcluir.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;");
+        btnEditar.setStyle("-fx-background-color: #FFA500; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;");
 
         // Layout para as informações de texto
         VBox infoBox = new VBox(2, nomeLabel, nivelElixirLabel);
         infoBox.setAlignment(Pos.CENTER_LEFT);
 
         // Layout horizontal principal
-        rootLayout = new HBox(15, imageView, infoBox, btnDetalhes, btnUsar, btnExcluir);
+        rootLayout = new HBox(15, imageView, infoBox, btnDetalhes,btnEditar, btnUsar, btnExcluir);
         rootLayout.setPadding(new Insets(10, 10, 10, 10));
         rootLayout.setAlignment(Pos.CENTER_LEFT);
         HBox.setHgrow(infoBox, Priority.ALWAYS);
@@ -122,6 +123,10 @@ public class CartaDetalhes extends ListCell<Carta> {
             //botao que chama a classe Detalhe para cada carta
             btnDetalhes.setOnAction(event -> {
                 Detalhes.exibir(carta);
+            });
+
+            btnEditar.setOnAction(event -> {
+                EditarCarta.exibir(carta); // vamos criar este arquivo depois
             });
 
             //botao de adicionar a carta ao deck

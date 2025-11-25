@@ -1,7 +1,7 @@
 nome;nivel;elixir;tipo;raridade;imagem;alvo;dano;danoSeg;vida;alcance;velocidade;velocidadeImpacto
-Arqueiras;11;3.0;TROPA;COMUM;imagens/arqueiras.png;AMBOS;50;30;150;5.0;MEDIA;1.2
+Arqueiras;10;3.0;TROPA;COMUM;imagens/arqueiras.png;AMBOS;50;30;150;5.0;MEDIA;1.2
 Bola de Fogo;11;4.0;FEITICO;RARA;imagens/bolaDeFogo.png;AMBOS;50;30;150;5.0;MEDIA;1.2
-Torre Inferno;11;5.0;CONSTRUCAO;RARA;imagens/torreInferno.png;AMBOS;50;30;150;5.0;MEDIA;1.2
+Torre Inferno;11;5.0;CONSTRUCAO;RARA;imagens/torreInferno.png;AMBOS;100;30;150;5.0;MEDIA;1.2
 Mosqueteira;11;4.0;TROPA;RARA;imagens/mosqueteira.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
 Horda de Servos;11;5.0;TROPA;COMUM;imagens/hordaDeServos.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
 Gigante;11;5.0;TROPA;RARA;imagens/gigante.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
@@ -9,4 +9,3 @@ Valquíria;11;4.0;TROPA;RARA;imagens/valquiria.png;TERRESTRE;50;30;150;5.0;MEDIA
 Príncipe;11;5.0;TROPA;EPICA;imagens/principe.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2
 Canhão;11;3.0;CONSTRUCAO;COMUM;imagens/canhao.png;AMBOS;50;30;150;5.0;MEDIA;1.2
 Zap;11;2.0;FEITICO;COMUM;imagens/zap.png;AMBOS;50;30;150;5.0;MEDIA;1.2
-agua;12;6.0;TROPA;COMUM;C:\Users\Raquel\OneDrive - IFSP - Instituto Federal de São Paulo\Imagens\ChatGPT Image 14 de set. de 2025, 15_49_22.png;TERRESTRE;160;130;240;5.0;LENTA;2.3
