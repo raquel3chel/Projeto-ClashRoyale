@@ -64,8 +64,36 @@ public class GerenciadorDecks extends BorderPane {
     }
 
     private void adicionarAbaDeck(Deck deck, int num){
-        Tab tab = new Tab(String.valueOf(num));
-        tab.setClosable(false); //nao deixa as abas fecharem
+        Tab tab = new Tab();
+
+        HBox titleBox = new HBox();
+        titleBox.setSpacing(6);
+
+        //nome da aba
+        Label nomeLabel = new Label(String.valueOf(num));
+        nomeLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+
+        // excluir deck
+        Button btnExcluirDeck = new Button("X");
+        btnExcluirDeck.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 5; -fx-font-weight: bold; -fx-background-radius: 3;");
+
+        btnExcluirDeck.setOnAction(e -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja excluir este deck?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES) {
+                Sistema.getInstance().getDecks().remove(deck);
+                DeckCSV.salvar();
+                carregarDecksExistentes(); // Atualiza as abas
+            }
+        });
+
+        //adiciona nome + X na aba
+        titleBox.getChildren().addAll(nomeLabel, btnExcluirDeck);
+        tab.setGraphic(titleBox);
+
+        tab.setClosable(false);
+
 
         tab.setContent(new CadaDeck(deck));
 

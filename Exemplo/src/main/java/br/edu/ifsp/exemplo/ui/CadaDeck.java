@@ -13,6 +13,7 @@ import javafx.scene.layout.VBox;
 import java.io.FileInputStream;
 import java.text.DecimalFormat;
 import java.util.List;
+import javafx.scene.control.Button;
 
 public class CadaDeck extends VBox {
     private final Deck deck;
@@ -88,11 +89,20 @@ public class CadaDeck extends VBox {
                     System.err.println("Erro ao carregar imagem no DeckView para " + carta.getNome());
                 }
 
+                Button btnExcluir = new Button("X");
+                btnExcluir.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 3; -fx-font-size: 10;");
+
+                btnExcluir.setOnAction(e -> {
+                    deck.removerCarta(carta);
+                    br.edu.ifsp.exemplo.data.DeckCSV.salvar();
+                    atualizarGrid(); // atualiza na tela
+                });
+
                 Label elixirLabel = new Label(ELIXIR_FORMAT.format(carta.getCustElixir()));
                 elixirLabel.setStyle("-fx-font-weight: bold; -fx-background-color: #9b59b6; -fx-text-fill: white; -fx-padding: 2 4; -fx-background-radius: 3;");
 
                 cardSlot.getChildren().clear();
-                cardSlot.getChildren().addAll(elixirLabel, imageView);
+                cardSlot.getChildren().addAll(elixirLabel, imageView,btnExcluir);
                 cardSlot.setStyle("-fx-border-color: #ccc; -fx-border-radius: 5; -fx-padding: 5;");
 
             } else {
