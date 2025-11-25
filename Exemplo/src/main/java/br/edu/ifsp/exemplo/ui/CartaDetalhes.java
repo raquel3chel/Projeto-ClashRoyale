@@ -35,7 +35,7 @@ public class CartaDetalhes extends ListCell<Carta> {
     private final Button btnEditar;
 
     // Formatador para o Elixir
-    private static final DecimalFormat ELIXIR_FORMAT = new DecimalFormat("0.#");
+    private static final DecimalFormat ELIXIR = new DecimalFormat("0.#");
 
     public CartaDetalhes() {
         // Inicialização dos componentes
@@ -64,7 +64,7 @@ public class CartaDetalhes extends ListCell<Carta> {
         infoBox.setAlignment(Pos.CENTER_LEFT);
 
         // Layout horizontal principal
-        rootLayout = new HBox(15, imageView, infoBox, btnDetalhes,btnEditar, btnUsar, btnExcluir);
+        rootLayout = new HBox(15, imageView, infoBox, btnDetalhes, btnUsar,btnEditar, btnExcluir);
         rootLayout.setPadding(new Insets(10, 10, 10, 10));
         rootLayout.setAlignment(Pos.CENTER_LEFT);
         HBox.setHgrow(infoBox, Priority.ALWAYS);
@@ -79,9 +79,9 @@ public class CartaDetalhes extends ListCell<Carta> {
             setText(null);
         } else {
             // define os labels
-            nomeLabel.setText(carta.getNome() + " (Nível " + carta.getNivel() + ")");
+            nomeLabel.setText(carta.getNome());
             // Formata Elixir
-            nivelElixirLabel.setText("Elixir: " + ELIXIR_FORMAT.format(carta.getCustElixir()) + " | " + carta.getRaridade());
+            nivelElixirLabel.setText( "Nível " + carta.getNivel()  );
 
             //tenta carregar a imagem
             try {
@@ -160,13 +160,13 @@ public class CartaDetalhes extends ListCell<Carta> {
                     if (deckAlvo == null) return; // Não deve ocorrer se a lista for bem feita
 
                     if (deckAlvo.getCartas().size() >= Deck.LIMITE) {
-                        new Alert(Alert.AlertType.ERROR, "O deck " + deckEscolhido + " já possui 8 cartas").show();
+                        new Alert(Alert.AlertType.ERROR, "O " + deckEscolhido + " já possui 8 cartas").show();
                         return;
                     }
 
                     // nao deixa repetir
                     if (deckAlvo.getCartas().contains(carta)) {
-                        new Alert(Alert.AlertType.ERROR, "Esta carta já está no deck " + deckEscolhido).show();
+                        new Alert(Alert.AlertType.ERROR, "Esta carta já está no " + deckEscolhido).show();
                         return;
                     }
 
@@ -174,7 +174,7 @@ public class CartaDetalhes extends ListCell<Carta> {
                     deckAlvo.adicionarCarta(carta);
                     DeckCSV.salvar();
 
-                    new Alert(Alert.AlertType.INFORMATION, "A carta '" + carta.getNome() + "' foi adicionada ao deck: " + deckEscolhido).show();
+                    new Alert(Alert.AlertType.INFORMATION, "A carta '" + carta.getNome() + "' foi adicionada ao: " + deckEscolhido).show();
 
                     // atualiza a visualização dos decks
                     Scene scene = btnUsar.getScene();

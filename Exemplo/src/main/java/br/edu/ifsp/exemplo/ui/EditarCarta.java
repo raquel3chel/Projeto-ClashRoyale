@@ -57,7 +57,7 @@ public class EditarCarta{
         layout.setPadding(new Insets(10));
         layout.setSpacing(8);
 
-        Scene cena = new Scene(layout, 300, 580);
+        Scene cena = new Scene(layout, 300, 530);
         janela.setScene(cena);
         janela.showAndWait();
     }
