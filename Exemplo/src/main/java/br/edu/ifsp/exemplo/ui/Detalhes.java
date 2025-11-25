@@ -8,9 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.URL;
 
 public class Detalhes {
@@ -28,7 +26,7 @@ public class Detalhes {
         try {
             String caminho = carta.getImagem();
 
-            // 1. Se for imagem interna (começa com "imagens/")
+            // se for imagem interna
             if (caminho.startsWith("imagens/")) {
                 String recurso = "/" + caminho;
                 URL url = Detalhes.class.getResource(recurso);
@@ -37,7 +35,7 @@ public class Detalhes {
                 }
             }
 
-            // 2. Se for arquivo externo
+            // se for arquivo externo
             if (image == null || image.isError()) {
                 image = new Image(new FileInputStream(caminho));
             }

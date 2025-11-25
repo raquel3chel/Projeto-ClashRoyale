@@ -103,7 +103,7 @@ public class Carta {
         this.velocImpacto = velocImpacto;
     }
 
-    //gets
+    //getters
     public String getNome(){
         return nome;
     }

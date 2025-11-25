@@ -8,10 +8,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.ScrollPane;
 
-/**
- * Interface gráfica para a aba Coleção.
- * Vinculada à ObservableList do Sistema e usa a CartaDetalhes para renderização customizada.
- */
 public class Colecao {
 
     public Colecao(){
@@ -31,15 +27,15 @@ public class Colecao {
         // liga à lista observavel do Sistema
         lista.setItems(Sistema.getInstance().getCartas());
 
-        //força a lista a usar a  classe CartaDetalhes para desenhar cada item
+        //usa a  classe CartaDetalhes para desenhar cada item
         lista.setCellFactory(param -> new CartaDetalhes());
 
-        // Define a altura para que a lista seja visível
+        // define a altura para que a lista seja visível
         lista.setPrefHeight(600);
 
         root.getChildren().addAll(colecao, lista);
 
-        // Retorna a ListView dentro do ScrollPane
+        // retorna a ListView dentro do ScrollPane
         ScrollPane scroll = new ScrollPane(root);
         scroll.setFitToWidth(true);
         return scroll;

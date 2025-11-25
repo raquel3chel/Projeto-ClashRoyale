@@ -24,12 +24,10 @@ public class Deck {
     //carta adicionada true
     public boolean adicionarCarta(Carta carta){
         if(cartas.size() >= LIMITE){
-            System.out.println("Deck cheio");
             return false;
         }
         //se ja tem a carta no deck
         if (cartas.contains(carta)) {
-            System.out.println("Essa carta ja existe");
             return false;
         }
         cartas.add(carta);
@@ -60,7 +58,6 @@ public class Deck {
         double somaTotalElixir = 0.0;
 
         if(numDeCartas == 0){
-            System.out.println("Não há nenhuma carta no Deck");
             return 0.0;
         }
 

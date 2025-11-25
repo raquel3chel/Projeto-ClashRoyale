@@ -91,31 +91,6 @@ public class DeckCSV {
 
         return decks;
     }
-    public static void adicionarUmDeck(Deck deck) {
-        if (deck != null) {
-            decks.add(deck);
-            salvar();
-        }
 
-    }
-    public static  void adicionarDecks(List<Deck> novosDecks){
-        if (novosDecks == null)
-            return;;
-            decks.clear();
-            decks.addAll(novosDecks);
-            salvar();
-    }
-
-    public static void removerDeck(Deck deck) {
-        if (deck == null)
-            return;
-        decks.remove(deck);
-        salvar();
-    }
-
-    public static void limpar() {
-        decks.clear();
-        salvar();
-    }
 
 }

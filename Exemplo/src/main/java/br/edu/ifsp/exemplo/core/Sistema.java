@@ -4,16 +4,10 @@ import br.edu.ifsp.exemplo.data.CSV;
 import br.edu.ifsp.exemplo.data.DeckCSV;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.util.List;
-import java.util.ArrayList;
-
-// Gerenciador principal do software (Singleton).
-//Controla a coleção de Cartas e Decks e a persistência de dados.
 
 public class Sistema {
 
-    // Padrão Singleton
     private static Sistema instance;
 
     public static Sistema getInstance(){
@@ -23,19 +17,19 @@ public class Sistema {
         return instance;
     }
 
-    // Coleção de Cartas (ObservableList para atualização automática da UI)
+    // coleção de Cartas,ObservableList para atualização
     private ObservableList<Carta> cartas;
     private List<Deck> decks ;
     private Deck deckSelecionado;
 
     private Sistema(){
         cartas = FXCollections.observableArrayList();
-        carregarCarta(); // Tenta carregar dados do arquivo ao iniciar
+        carregarCarta(); // tenta carregar dados do arquivo ao iniciar
 
         decks = DeckCSV.carregarDeck(cartas);
 
         if (cartas.isEmpty()){
-            cartasIniciais(); // Se o arquivo estiver vazio, cria cartas iniciais
+            cartasIniciais(); // se o arquivo estiver vazio, cria cartas iniciais
             salvar();
         }
     }

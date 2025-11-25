@@ -53,11 +53,6 @@ public class GerenciadorDecks extends BorderPane {
 
         List<Deck> decks = Sistema.getInstance().getDecks();
 
-        if(decks.isEmpty()){
-            Sistema.getInstance().criarDeck("Deck 1");
-            decks = Sistema.getInstance().getDecks();
-        }
-
         for (int i =0; i < decks.size(); i++){
             adicionarAbaDeck(decks.get(i), i + 1);
         }
@@ -101,7 +96,7 @@ public class GerenciadorDecks extends BorderPane {
             }
         });
 
-        //adiciona nome + X na aba
+        //adiciona nome do deck e o botao de excluit na aba
         titleBox.getChildren().addAll(nomeLabel, btnExcluirDeck);
         tab.setGraphic(titleBox);
 
@@ -119,7 +114,7 @@ public class GerenciadorDecks extends BorderPane {
 
     private void adicionarNovoDeck(){
         int prox = Sistema.getInstance().getDecks().size() + 1;
-        String nomeDeck = "Deck" + prox;
+        String nomeDeck = "Deck " + prox;
 
         if (Sistema.getInstance().criarDeck(nomeDeck)) {
 

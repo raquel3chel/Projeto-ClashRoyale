@@ -40,7 +40,7 @@ public class Cadastro {
     private final ImageView imageView = new ImageView();
 
     // O Deck é mantido, mas não usado na lógica de cadastro
-    public Cadastro(Deck deck){
+    public Cadastro(){
         // Inicialização da ImageView
         imageView.setFitWidth(40);
         imageView.setFitHeight(50);
@@ -182,7 +182,11 @@ public class Cadastro {
         titulo.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-padding: 0 0 4 0;");
         titulo.setAlignment(Pos.CENTER_LEFT);
         GridPane.setHgrow(titulo, Priority.ALWAYS);
-        layout.add(titulo, 0, row, 2, 1); // Pré-visualização
+
+        HBox tituloBox = new HBox(10, titulo, imageView);
+        tituloBox.setAlignment(Pos.CENTER_LEFT);
+        GridPane.setHgrow(tituloBox, Priority.ALWAYS);
+        layout.add(tituloBox, 0, row, 2, 1);
         row++;
 
         layout.add(new Label("Nome da carta:"), 0, row);

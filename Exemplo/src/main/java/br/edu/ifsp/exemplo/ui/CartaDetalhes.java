@@ -14,16 +14,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.Priority;
-
 import java.io.FileInputStream;
-import java.text.DecimalFormat; // Importação para formatar o Elixir
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * Classe para mostrar os detalhes de cada item da ListView (Coleção).
- * Estende ListCell<Carta> e define o visual de Carta com imagem, texto e botoes Detalhes/Usar.
- */
 public class CartaDetalhes extends ListCell<Carta> {
     private final HBox rootLayout;
     private final ImageView imageView;
@@ -34,11 +28,8 @@ public class CartaDetalhes extends ListCell<Carta> {
     private final Button btnExcluir;
     private final Button btnEditar;
 
-    // Formatador para o Elixir
-    private static final DecimalFormat ELIXIR = new DecimalFormat("0.#");
-
     public CartaDetalhes() {
-        // Inicialização dos componentes
+        // inicializaçao
         imageView = new ImageView();
         imageView.setFitWidth(60);
         imageView.setFitHeight(70);
@@ -59,11 +50,11 @@ public class CartaDetalhes extends ListCell<Carta> {
         btnExcluir.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;");
         btnEditar.setStyle("-fx-background-color: #FFA500; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;");
 
-        // Layout para as informações de texto
+        // layout para as informações de texto
         VBox infoBox = new VBox(2, nomeLabel, nivelElixirLabel);
         infoBox.setAlignment(Pos.CENTER_LEFT);
 
-        // Layout horizontal principal
+        // layout horizontal principal
         rootLayout = new HBox(15, imageView, infoBox, btnDetalhes, btnUsar,btnEditar, btnExcluir);
         rootLayout.setPadding(new Insets(10, 10, 10, 10));
         rootLayout.setAlignment(Pos.CENTER_LEFT);
@@ -80,7 +71,7 @@ public class CartaDetalhes extends ListCell<Carta> {
         } else {
             // define os labels
             nomeLabel.setText(carta.getNome());
-            // Formata Elixir
+            // formata Elixir
             nivelElixirLabel.setText( "Nível " + carta.getNivel()  );
 
             //tenta carregar a imagem
@@ -145,19 +136,19 @@ public class CartaDetalhes extends ListCell<Carta> {
                         .map(Deck::getNome)
                         .collect(Collectors.toList());
 
-                // 2. Cria a caixa de diálogo para escolha de deck
+                // caixa de diálogo para escolha de deck
                 ChoiceDialog<String> dialog = new ChoiceDialog<>(nomesDecks.get(0), nomesDecks);
                 dialog.setTitle("Adicionar Carta ao Deck");
                 dialog.setHeaderText(carta.getNome());
                 dialog.setContentText("Selecione o Deck:");
 
-                // 3. Mostra a caixa de diálogo e processa a escolha
+                // processa a escolha da caixa
                 Optional<String> result = dialog.showAndWait();
 
                 result.ifPresent(deckEscolhido -> {
                     Deck deckAlvo = Sistema.getInstance().buscarDeck(deckEscolhido);
 
-                    // Verifica se o deck foi encontrado e se tem espaço
+                    // verifica se o deck foi encontrado e se tem espaço
                     if (deckAlvo == null) return; // Não deve ocorrer se a lista for bem feita
 
                     if (deckAlvo.getCartas().size() >= Deck.LIMITE) {

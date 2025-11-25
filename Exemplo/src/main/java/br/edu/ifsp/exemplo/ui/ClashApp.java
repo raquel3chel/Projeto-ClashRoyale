@@ -9,10 +9,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.stage.Stage;
 
-
-import java.io.IOException;
-import java.util.List;
-
 public class
 ClashApp extends Application {
 
@@ -42,10 +38,10 @@ ClashApp extends Application {
 
         pagina.getTabs().addAll(pagCartas, pagColecao, pagDeck);
 
-        Cadastro telaCadastro = new Cadastro(null);
+        Cadastro telaCadastro = new Cadastro();
         pagCartas.setContent(telaCadastro.getLayout());
 
-        // COLEÇÃO
+        // colecao
         Colecao telaColecao = new Colecao();
         pagColecao.setOnSelectionChanged(ev -> {
             if (pagColecao.isSelected()){
@@ -54,7 +50,7 @@ ClashApp extends Application {
         });
 
 
-        Scene cena = new Scene(pagina, 900, 600);
+        Scene cena = new Scene(pagina, 900, 630);
         stage.setTitle("Clash-Royale");
         stage.setScene(cena);
         stage.show();
