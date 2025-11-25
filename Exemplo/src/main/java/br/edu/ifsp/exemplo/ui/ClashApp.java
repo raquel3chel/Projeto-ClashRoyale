@@ -1,7 +1,5 @@
 package br.edu.ifsp.exemplo.ui;
 
-import br.edu.ifsp.exemplo.core.Carta;
-import br.edu.ifsp.exemplo.core.Deck;
 import br.edu.ifsp.exemplo.core.Sistema;
 import javafx.application.Application;
 import javafx.scene.Scene;

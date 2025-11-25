@@ -1,7 +1,6 @@
 package br.edu.ifsp.exemplo.data;
 
 import br.edu.ifsp.exemplo.core.*;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

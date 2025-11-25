@@ -1,7 +1,5 @@
 package br.edu.ifsp.exemplo.core;
 
-import java.util.Objects;
-
 public class Carta {
     //atributos
     private String nome;

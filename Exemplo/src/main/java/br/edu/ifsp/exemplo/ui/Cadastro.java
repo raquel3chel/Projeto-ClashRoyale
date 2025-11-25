@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage; // para FileChooser
+import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -18,7 +18,7 @@ import java.io.FileNotFoundException;
 public class Cadastro {
 
     // variaveis de instancia
-    // TextFields
+    // campo de texto
     private final TextField txtNomeCarta = new TextField();
     private final TextField txtNivel = new TextField();
     private final TextField txtCustoElixir = new TextField();
@@ -35,11 +35,9 @@ public class Cadastro {
     private final ComboBox<Raridade> tipoRarid = new ComboBox<>();
     private final ComboBox<TipoAlvo> tipoAl = new ComboBox<>();
 
-    // Outros Componentes
     private final Label lblMensagem = new Label();
     private final ImageView imageView = new ImageView();
 
-    // O Deck é mantido, mas não usado na lógica de cadastro
     public Cadastro(){
         // Inicialização da ImageView
         imageView.setFitWidth(40);
@@ -49,7 +47,6 @@ public class Cadastro {
     }
 
     private void handleBuscarImagem() {
-        // Usa o stage da aplicação (getScene().getWindow())
         Stage stage = (Stage) txtCaminhoImagem.getScene().getWindow();
 
         FileChooser fileChooser = new FileChooser();

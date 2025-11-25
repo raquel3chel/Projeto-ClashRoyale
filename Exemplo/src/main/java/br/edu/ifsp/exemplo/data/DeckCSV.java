@@ -2,7 +2,6 @@ package br.edu.ifsp.exemplo.data;
 
 import br.edu.ifsp.exemplo.core.Carta;
 import br.edu.ifsp.exemplo.core.Deck;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +10,6 @@ public class DeckCSV {
 
     private static final String DECK = "decks.csv";
     private static final String SEP = ";";
-
     private static final List<Deck> decks = new ArrayList<>();
 
 
