@@ -8,6 +8,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 
 import java.util.List;
 
@@ -28,7 +30,16 @@ public class GerenciadorDecks extends BorderPane {
         btnAdicionar.setPadding(new Insets(1, 8, 1, 8));
         btnAdicionar.setOnAction(e -> adicionarNovoDeck());
 
-        HBox topBox = new HBox(10, titulo, btnAdicionar);
+        Button btnMostrarAoCla = new Button("Mostrar ao Clã");
+        btnMostrarAoCla.setStyle("-fx-font-size: 12px; -fx-font-weight: bold; -fx-background-color: #3498db; -fx-text-fill: white;");
+        btnMostrarAoCla.setOnAction(e -> mostrarAoCla());
+
+        //espaco entre titulo/botao adicionar e botao mostrar cla
+        Region espaco = new Region();
+
+        HBox.setHgrow(espaco, Priority.ALWAYS);
+
+        HBox topBox = new HBox(10, titulo, btnAdicionar,espaco, btnMostrarAoCla);
         topBox.setPadding(new Insets(10, 10, 10, 20));
         topBox.setAlignment(Pos.CENTER_LEFT);
 
@@ -100,6 +111,10 @@ public class GerenciadorDecks extends BorderPane {
         tab.setContent(new CadaDeck(deck));
 
         tabPaneDecks.getTabs().add(tab);
+    }
+
+    private void mostrarAoCla(){
+        new Alert(Alert.AlertType.INFORMATION, "Em Desenvolvimento").show();
     }
 
     private void adicionarNovoDeck(){
