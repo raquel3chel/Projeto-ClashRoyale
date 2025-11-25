@@ -127,6 +127,7 @@ public class CartaDetalhes extends ListCell<Carta> {
 
             btnEditar.setOnAction(event -> {
                 EditarCarta.exibir(carta); // vamos criar este arquivo depois
+                getListView().refresh();
             });
 
             //botao de adicionar a carta ao deck

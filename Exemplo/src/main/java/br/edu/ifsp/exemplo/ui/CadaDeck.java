@@ -18,8 +18,8 @@ import javafx.scene.control.Button;
 public class CadaDeck extends VBox {
     private final Deck deck;
     private final GridPane cartaGrid;
-    private final Label custoMedioLabel;
-    private static final DecimalFormat ELIXIR_FORMAT = new DecimalFormat("0.0");
+    private final Label custoMedio;
+    private static final DecimalFormat ELIXIR = new DecimalFormat("0.0");
 
     public CadaDeck(Deck deck) {
         this.deck = deck;
@@ -34,11 +34,11 @@ public class CadaDeck extends VBox {
         cartaGrid.setAlignment(Pos.TOP_CENTER);
 
         // Label para o custo médio de elixir
-        custoMedioLabel = new Label();
-        custoMedioLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 24px; -fx-text-fill: #9b59b6;"); // Cor roxa para Elixir
+        custoMedio = new Label();
+        custoMedio.setStyle("-fx-font-weight: bold; -fx-font-size: 24px; -fx-text-fill: #9b59b6;"); // Cor roxa para Elixir
 
-        // Layout para o MCE na parte inferior
-        VBox mceBox = new VBox(custoMedioLabel);
+        // Layout
+        VBox mceBox = new VBox(custoMedio);
         mceBox.setAlignment(Pos.BOTTOM_CENTER);
         mceBox.setPadding(new Insets(30, 0, 0, 0));
 
@@ -89,8 +89,8 @@ public class CadaDeck extends VBox {
                     System.err.println("Erro ao carregar imagem no DeckView para " + carta.getNome());
                 }
 
-                Button btnExcluir = new Button("X");
-                btnExcluir.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 3; -fx-font-size: 10;");
+                Button btnExcluir = new Button("Excluir");
+                btnExcluir.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-size: 12;");
 
                 btnExcluir.setOnAction(e -> {
                     deck.removerCarta(carta);
@@ -98,7 +98,7 @@ public class CadaDeck extends VBox {
                     atualizarGrid(); // atualiza na tela
                 });
 
-                Label elixirLabel = new Label(ELIXIR_FORMAT.format(carta.getCustElixir()));
+                Label elixirLabel = new Label(ELIXIR.format(carta.getCustElixir()));
                 elixirLabel.setStyle("-fx-font-weight: bold; -fx-background-color: #9b59b6; -fx-text-fill: white; -fx-padding: 2 4; -fx-background-radius: 3;");
 
                 cardSlot.getChildren().clear();
@@ -111,11 +111,11 @@ public class CadaDeck extends VBox {
                 cardSlot.getChildren().add(new Label("Vazio"));
             }
 
-            cartaGrid.add(cardSlot, i % 4, i / 4); // 2 colunas
+            cartaGrid.add(cardSlot, i % 4, i / 4); // 4 colunas e 2 linha
         }
 
         // Atualiza o custo médio
-        custoMedioLabel.setText(ELIXIR_FORMAT.format(deck.calcularCustoMedioElixir()));
+        custoMedio.setText(ELIXIR.format(deck.calcularCustoMedioElixir()));
     }
 }
 

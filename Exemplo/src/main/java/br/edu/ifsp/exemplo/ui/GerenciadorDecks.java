@@ -20,11 +20,12 @@ public class GerenciadorDecks extends BorderPane {
         this.setCenter(tabPaneDecks);
 
         //titulo e botao para adicionar outros decks
-        Label titulo = new Label("Meus Deks");
+        Label titulo = new Label("Meus Decks");
         titulo.setStyle("-fx-font-weight: bold; -fx-font-size: 20px;");
 
         Button btnAdicionar = new Button("+");
         btnAdicionar.setStyle("-fx-font-size: 16px; -fx-font-weight: bold; -fx-background-color: #f39c12; -fx-text-fill: white;");
+        btnAdicionar.setPadding(new Insets(1, 8, 1, 8));
         btnAdicionar.setOnAction(e -> adicionarNovoDeck());
 
         HBox topBox = new HBox(10, titulo, btnAdicionar);
@@ -75,7 +76,8 @@ public class GerenciadorDecks extends BorderPane {
 
         // excluir deck
         Button btnExcluirDeck = new Button("X");
-        btnExcluirDeck.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 5; -fx-font-weight: bold; -fx-background-radius: 3;");
+        btnExcluirDeck.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 8; -fx-font-weight: bold; -fx-background-radius: 6;");
+        btnExcluirDeck.setPadding(new Insets(2,5,2,5));
 
         btnExcluirDeck.setOnAction(e -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Deseja excluir este deck?", ButtonType.YES, ButtonType.NO);

@@ -1,5 +1,5 @@
 nome;nivel;elixir;tipo;raridade;imagem;alvo;dano;danoSeg;vida;alcance;velocidade;velocidadeImpacto
-Arqueiras;10;3.0;TROPA;COMUM;imagens/arqueiras.png;AMBOS;50;30;150;5.0;MEDIA;1.2
+Arqueiras;10;3.0;TROPA;COMUM;imagens/arqueiras.png;AMBOS;50;35;150;5.0;RAPIDA;1.2
 Bola de Fogo;11;4.0;FEITICO;RARA;imagens/bolaDeFogo.png;AMBOS;50;30;150;5.0;MEDIA;1.2
 Torre Inferno;11;5.0;CONSTRUCAO;RARA;imagens/torreInferno.png;AMBOS;100;30;150;5.0;MEDIA;1.2
 Mosqueteira;11;4.0;TROPA;RARA;imagens/mosqueteira.png;TERRESTRE;50;30;150;5.0;MEDIA;1.2

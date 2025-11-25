@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Priority;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage; // Necessário para FileChooser
+import javafx.stage.Stage; // para FileChooser
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -206,7 +206,7 @@ public class Cadastro {
         layout.add(new Label("Alcance da Carta:"),0, row);
         layout.add(txtAlcance, 1,row++);
 
-        layout.add(new Label("Velocidade do Impacto"),0, row);
+        layout.add(new Label("Velocidade do Impacto:"),0, row);
         layout.add(txtImpac, 1,row++);
 
         layout.add(new Label("Tipo de carta:"), 0, row);
@@ -215,7 +215,7 @@ public class Cadastro {
         layout.add(new Label("Raridade:"), 0, row);
         layout.add(tipoRarid, 1, row++);
 
-        layout.add(new Label("Tipo de Alvo"),0, row);
+        layout.add(new Label("Tipo de Alvo:"),0, row);
         layout.add(tipoAl, 1,row++);
 
         layout.add(new Label("Velocidade:"),0, row);

@@ -6,7 +6,7 @@ public class Carta {
     //atributos
     private String nome;
     private int nivel;
-    private double custElixir; // Alterado para double para precisão
+    private double custElixir;
     private TipoDeCarta tipoCarta;
     private Raridade raridade;
     private String imagem;
@@ -19,55 +19,69 @@ public class Carta {
     private double velocImpacto;
 
 
+    //metodos setters
     public void setNome(String nome) {
+
         this.nome = nome;
     }
 
     public void setNivel(int nivel) {
+
         this.nivel = nivel;
     }
 
     public void setCustElixir(double custElixir) {
+
         this.custElixir = custElixir;
     }
 
     public void setTipoCarta(TipoDeCarta tipoCarta) {
+
         this.tipoCarta = tipoCarta;
     }
 
     public void setRaridade(Raridade raridade) {
+
         this.raridade = raridade;
     }
 
     public void setImagem(String imagem) {
+
         this.imagem = imagem;
     }
 
     public void setDano(int dano) {
+
         this.dano = dano;
     }
 
     public void setDanoSeg(int danoSeg) {
+
         this.danoSeg = danoSeg;
     }
 
     public void setPontosVida(int pontosVida) {
+
         this.pontosVida = pontosVida;
     }
 
     public void setTipoAlvos(TipoAlvo tipoAlvos) {
+
         this.tipoAlvos = tipoAlvos;
     }
 
     public void setAlcance(double alcance) {
+
         this.alcance = alcance;
     }
 
     public void setVelocidade(Velocidade velocidade) {
+
         this.velocidade = velocidade;
     }
 
     public void setVelocImpacto(double velocImpacto) {
+
         this.velocImpacto = velocImpacto;
     }
 
